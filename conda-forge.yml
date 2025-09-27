@@ -1,16 +1,16 @@
-github:
-  branch_name: main
-  tooling_branch_name: main
+build_platform:
+  linux_64: linux_64
+  osx_64: osx_64
+  osx_arm64: osx_64
+channel_priority: strict
 conda_build:
   error_overlinking: true
 conda_forge_output_validation: true
-channel_priority: strict
-build_platform:
-  osx_arm64: osx_arm64
-  linux_64: linux_64
-  osx_64: osx_64
-test: native_and_emulated
+github:
+  branch_name: main
+  tooling_branch_name: main
 provider:
-    linux_64: azure
-    osx_64: azure
-    osx_arm64: azure
+  linux_64: azure
+  osx_64: azure
+  osx_arm64: azure
+test: native_and_emulated
