@@ -28,14 +28,14 @@ requirements:
     - pip
     - pybind11
     - nlohmann_json
-    - librdkit <=2024.09.3
     - rdkit
-    - librdkit-dev
+    - librdkit-dev <=2024.09.3
     - libboost-devel
     - nauty
     - llvm-openmp
   run:
     - python
+    - {{ pin_compatible("librdkit", exact=True) }}
     - rdkit
     - eigen
     - jupyter
