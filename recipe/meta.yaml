@@ -28,8 +28,6 @@ requirements:
     - pip
     - pybind11
     - nlohmann_json
-    - librdkit-dev
-    - rdkit
     - librdkit <=2024.09.3
     - rdkit
     - librdkit-dev
@@ -38,13 +36,8 @@ requirements:
     - llvm-openmp
   run:
     - python
-    - libboost-python-devel
-    - librdkit
-    - libpq
     - rdkit
     - eigen
-    - pybind11
-    - nauty
     - jupyter
     - seaborn
     - cairosvg
@@ -53,7 +46,6 @@ requirements:
     - dash
     - dash_cytoscape
     - scikit-learn
-    - llvm-openmp
 
 test:
   imports:
