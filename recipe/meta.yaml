@@ -10,7 +10,11 @@ source:
   sha256: b6fddeb6bad6eb758a86e00ee5091b2f6634221515fef04c0b7c021b9de8a8db
 
 build:
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  script:
+    # CMakeLists.txt uses CONDA_PREFIX and with conda-build
+    # CONDA_PREFIX == BUILD_PREFIX and CONDA_PREFIX != PREFIX
+    - export CONDA_PREFIX=$PREFIX
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 2
   skip: true  # [win]
 
