@@ -10,8 +10,12 @@ source:
   sha256: b6fddeb6bad6eb758a86e00ee5091b2f6634221515fef04c0b7c021b9de8a8db
 
 build:
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  script:
+    # CMakeLists.txt uses CONDA_PREFIX and with conda-build
+    # CONDA_PREFIX == BUILD_PREFIX and CONDA_PREFIX != PREFIX
+    - export CONDA_PREFIX=$PREFIX
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 2
   skip: true  # [win]
 
 requirements:
@@ -22,29 +26,23 @@ requirements:
     - {{ stdlib("c") }}
     - cmake
     - make 
-    - librdkit <=2024.09.3
-    - rdkit
-    - librdkit-dev
-    - libboost-devel
-    - nauty
-    - llvm-openmp
   host:
     - python
     - scikit-build-core
     - pip
     - pybind11
     - nlohmann_json
-    - librdkit-dev
     - rdkit
+    - librdkit-dev <=2024.09.3
+    - libboost-devel
+    - nauty
+    - llvm-openmp
+    - libpq
   run:
     - python
-    - libboost-python-devel
-    - librdkit
-    - libpq
+    - {{ pin_compatible("librdkit", exact=True) }}
     - rdkit
     - eigen
-    - pybind11
-    - nauty
     - jupyter
     - seaborn
     - cairosvg
@@ -53,7 +51,6 @@ requirements:
     - dash
     - dash_cytoscape
     - scikit-learn
-    - llvm-openmp
 
 test:
   imports:
