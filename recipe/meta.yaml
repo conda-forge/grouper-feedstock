@@ -37,6 +37,7 @@ requirements:
     - libboost-devel
     - nauty
     - llvm-openmp
+    - libpq
   run:
     - python
     - {{ pin_compatible("librdkit", exact=True) }}
