@@ -33,7 +33,7 @@ requirements:
     - pybind11
     - nlohmann_json
     - rdkit
-    - librdkit-dev <=2024.09.3
+    - librdkit-dev
     - libboost-devel
     - nauty
     - llvm-openmp
