@@ -16,6 +16,7 @@ build:
     - export CONDA_PREFIX=$PREFIX
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 3
+  cxx_std: 17
   skip: true  # [win]
 
 requirements:
