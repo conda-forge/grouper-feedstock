@@ -15,7 +15,8 @@ build:
     # CONDA_PREFIX == BUILD_PREFIX and CONDA_PREFIX != PREFIX
     - export CONDA_PREFIX=$PREFIX
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 2
+  number: 3
+  cxx_std: 17
   skip: true  # [win]
 
 requirements:
@@ -33,7 +34,7 @@ requirements:
     - pybind11
     - nlohmann_json
     - rdkit
-    - librdkit-dev <=2024.09.3
+    - librdkit-dev
     - libboost-devel
     - nauty
     - llvm-openmp
