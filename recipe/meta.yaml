@@ -15,7 +15,7 @@ build:
     # CONDA_PREFIX == BUILD_PREFIX and CONDA_PREFIX != PREFIX
     - export CONDA_PREFIX=$PREFIX
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 2
+  number: 3
   skip: true  # [win]
 
 requirements:
