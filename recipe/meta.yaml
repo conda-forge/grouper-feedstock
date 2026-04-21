@@ -1,5 +1,5 @@
 {% set name = "Grouper" %}
-{% set version = "0.0.3" %}
+{% set version = "0.0.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/mosdef-hub/Grouper/archive/v{{ version }}.tar.gz
-  sha256: b6fddeb6bad6eb758a86e00ee5091b2f6634221515fef04c0b7c021b9de8a8db
+  sha256: 6e8eeae59e777af60dbd5a9d7071462e851f40eef5a73a5ea6a35ee26284b310
 
 build:
   script:
@@ -15,17 +15,17 @@ build:
     # CONDA_PREFIX == BUILD_PREFIX and CONDA_PREFIX != PREFIX
     - export CONDA_PREFIX=$PREFIX
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 2
+  number: 0
   skip: true  # [win]
 
 requirements:
-  build: 
-    - python                                 
+  build:
+    - python
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - {{ compiler('cxx') }}
     - {{ stdlib("c") }}
     - cmake
-    - make 
+    - make
   host:
     - python
     - scikit-build-core
@@ -33,7 +33,7 @@ requirements:
     - pybind11
     - nlohmann_json
     - rdkit
-    - librdkit-dev <=2024.09.3
+    - librdkit-dev
     - libboost-devel
     - nauty
     - llvm-openmp
